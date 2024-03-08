@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (
+from .views import (  # Better to use absolute imports instead of relative
     TaskListView,
     TaskCreateView,
     TaskUpdateView,
@@ -25,7 +25,8 @@ urlpatterns = [
     path("tags/<int:pk>/delete", TagDeleteView.as_view(), name="tag-delete"),
 
     path('chng_st/<int:pk>', TaskChangeStatusView.as_view(), name='task_change_status'),
-
+    # Path should contain proper descriptive name
+    # Path name should have '-' instead of '_'
 ]
 
 app_name = "todo"

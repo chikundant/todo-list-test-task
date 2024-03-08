@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect
+# get_object_or_404 imported but unused
 from django.urls import reverse_lazy
 from django.views import generic, View
 
@@ -64,7 +65,9 @@ class TagDeleteView(generic.DeleteView):
 
 
 class TaskChangeStatusView(View):
-    def post(self, request, pk):
+    def post(self, request, pk):  # Better to use type annotations
+        # If you do not need 'request' in your code you can set it as _ with
+        # proper annotation
         task = Task.objects.get(id=pk)
         task.is_done = not task.is_done
         task.save()
